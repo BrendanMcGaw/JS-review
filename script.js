@@ -170,7 +170,7 @@ newGenres;
 const updatedBook = {
   ...book,
   moviePublicationDate: "2001-12-19",
-  pages: 1210,
+  // pages: 1210,
 };
 
 updatedBook;
@@ -178,5 +178,18 @@ updatedBook;
 // Template literal example, pretty simple. Use backticks to make the string into a template literal, then use ${} to add javascript inside a string.
 const summary = `${title}, is a book with ${pages} pages, it was written by ${author} and published in ${
   publicationDate.split("-")[0]
-} `;
+} The book has ${
+  hasMovieAdaptation == true ? "truly" : "not yet" // inline template literal ternary conditional.+
+} been adapted as a movie `;
 console.log(summary);
+
+// Ternary operation. If this > that ? "This is that" : "This is not that."
+// Basic if, else statement.
+const pagesRange =
+  pages > 1000 ? "over a thousand pages" : "less then a thousand";
+
+console.log(pagesRange);
+
+console.log(`The book has ${pagesRange} pages`);
+
+// Terneray can return a value where if / else statements cannot.
