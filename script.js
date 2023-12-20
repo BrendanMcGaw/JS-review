@@ -193,3 +193,12 @@ console.log(pagesRange);
 console.log(`The book has ${pagesRange} pages`);
 
 // Terneray can return a value where if / else statements cannot.
+
+// const getYear = (str) => {
+//   return str.split("-")[0];
+// };
+
+const getYear = (str) => str.split("-")[0];
+// Look at this fancy boy arrow function. Both work the same way.
+
+console.log(getYear(publicationDate)); // publicationDate is just the argument we passed as str to the function.
