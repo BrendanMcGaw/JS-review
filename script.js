@@ -238,6 +238,12 @@ const essentialData = books.map((book) => ({
   title: book.title,
   author: book.author,
   reviewsCount: getTotalReviewCount(book),
+  pages: book.pages,
 }));
 // essentialData is now a new object with properties assigned for both the title and author of each book.
 essentialData;
+
+const longBooks = books.filter((book) => book.pages > 500 && book.pages < 1000);
+// Conditional filtering to create a new array based on the conditional statement.
+
+console.log(longBooks);
