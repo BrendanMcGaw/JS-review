@@ -145,60 +145,70 @@ function getBook(id) {
 
 // Destructuring
 
-const book = getBook(1);
+const book = getBook(3);
 // const title = book.title;
 // const author = book.author;
 
 // This is destructuring, where you take the propertys from the objects and assign them to variables.
-const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
-  book;
+// const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
+//   book;
 
-console.log(author, title, genres);
+// console.log(author, title, genres);
 
-// this is called a "rest operator" which makes sense as its grabbing the "rest" of the properties in the array.
-const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
-otherGenres;
-// const primaryGenre = genres[0];
-// const secondaryGenre = genres[1];
+// // this is called a "rest operator" which makes sense as its grabbing the "rest" of the properties in the array.
+// const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
+// otherGenres;
+// // const primaryGenre = genres[0];
+// // const secondaryGenre = genres[1];
 
-console.log(primaryGenre, secondaryGenre);
+// console.log(primaryGenre, secondaryGenre);
 
-const newGenres = ["epic fantasy", ...genres];
-newGenres;
+// const newGenres = ["epic fantasy", ...genres];
+// newGenres;
 
-// Adding new property to object book.
-const updatedBook = {
-  ...book,
-  moviePublicationDate: "2001-12-19",
-  // pages: 1210,
-};
-
-updatedBook;
-
-// Template literal example, pretty simple. Use backticks to make the string into a template literal, then use ${} to add javascript inside a string.
-const summary = `${title}, is a book with ${pages} pages, it was written by ${author} and published in ${
-  publicationDate.split("-")[0]
-} The book has ${
-  hasMovieAdaptation == true ? "truly" : "not yet" // inline template literal ternary conditional.+
-} been adapted as a movie `;
-console.log(summary);
-
-// Ternary operation. If this > that ? "This is that" : "This is not that."
-// Basic if, else statement.
-const pagesRange =
-  pages > 1000 ? "over a thousand pages" : "less then a thousand";
-
-console.log(pagesRange);
-
-console.log(`The book has ${pagesRange} pages`);
-
-// Terneray can return a value where if / else statements cannot.
-
-// const getYear = (str) => {
-//   return str.split("-")[0];
+// // Adding new property to object book.
+// const updatedBook = {
+//   ...book,
+//   moviePublicationDate: "2001-12-19",
+//   // pages: 1210,
 // };
 
-const getYear = (str) => str.split("-")[0];
-// Look at this fancy boy arrow function. Both work the same way.
+// // const getYear = (str) => {
+// //   return str.split("-")[0];
+// // };
 
-console.log(getYear(publicationDate)); // publicationDate is just the argument we passed as str to the function.
+// // Look at this fancy boy arrow function. Both work the same way.
+
+// const getYear = (str) => str.split("-")[0];
+
+// console.log(getYear(publicationDate)); // publicationDate is just the argument we passed as str to the function.
+
+// updatedBook;
+
+// // Template literal example, pretty simple. Use backticks to make the string into a template literal, then use ${} to add javascript inside a string.
+// const summary = `${title}, is a book with ${pages} pages, it was written by ${author} and published in ${getYear(
+//   publicationDate
+// )} The book has ${
+//   hasMovieAdaptation == true ? "truly" : "not yet" // inline template literal ternary conditional.+
+// } been adapted as a movie `;
+// console.log(summary);
+
+// // Ternary operation. If this > that ? "This is that" : "This is not that."
+// // Basic if, else statement.
+// const pagesRange =
+//   pages > 1000 ? "over a thousand pages" : "less then a thousand";
+
+// console.log(pagesRange);
+
+// console.log(`The book has ${pagesRange} pages`);
+
+// function getTotalReviewCount(book) {
+//   const goodread = book.reviews?.goodreads?.reviewsCount; // initial ? is for optional chaining, to make sure that "goodreads" even exists.
+//   const librarything = book.reviews?.librarything?.reviewsCount ?? 0; // knowledge coelescing allows us to give a value of 0 if there is nothing there.
+//   librarything;
+
+//   return goodread + librarything;
+// }
+
+// console.log(getTotalReviewCount(book));
+// Terneray can return a value where if / else statements cannot.
