@@ -145,7 +145,7 @@ function getBook(id) {
 
 // Destructuring
 
-const book = getBook(3);
+// const book = getBook(3);
 // const title = book.title;
 // const author = book.author;
 
@@ -202,13 +202,42 @@ const book = getBook(3);
 
 // console.log(`The book has ${pagesRange} pages`);
 
-// function getTotalReviewCount(book) {
-//   const goodread = book.reviews?.goodreads?.reviewsCount; // initial ? is for optional chaining, to make sure that "goodreads" even exists.
-//   const librarything = book.reviews?.librarything?.reviewsCount ?? 0; // knowledge coelescing allows us to give a value of 0 if there is nothing there.
-//   librarything;
-
 //   return goodread + librarything;
 // }
 
 // console.log(getTotalReviewCount(book));
 // Terneray can return a value where if / else statements cannot.
+
+const books = getBooks();
+books;
+
+// Mapping
+// const newArray = [1, 2, 3, 4, 5].map((element) => element * 2);
+// newArray;
+
+oldArray = [1, 2, 3, 4, 5];
+const newArray = oldArray.map((el) => el * 2);
+
+console.log(newArray);
+
+function getTotalReviewCount(book) {
+  const goodread = book.reviews?.goodreads?.reviewsCount; // initial ? is for optional chaining, to make sure that "goodreads" even exists.
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0; // knowledge coelescing allows us to give a value of 0 if there is nothing there.
+  librarything;
+  return goodread + librarything;
+}
+
+// Maps through the data of titles across each book and then stores those titles in a new array called "titles"
+const titles = books.map((book) => book.title);
+titles;
+
+// Creating a new object with multiple properties pulled from the initial object.
+const essentialData = books.map((book) => ({
+  // the paranthesis enclosing the {} allows us to automatically return the contents, since normally a {} following an arrow function would be considered a decleration
+  // we have to return the contents in order to store them in our new object array.
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewCount(book),
+}));
+// essentialData is now a new object with properties assigned for both the title and author of each book.
+essentialData;
