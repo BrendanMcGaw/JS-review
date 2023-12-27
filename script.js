@@ -271,3 +271,28 @@ const sortedByPages = books
 // mapping the title and pages to the books from highest to lowest pages, allows for easier reading.
 sortedByPages;
 console.log(longBooks);
+
+// 1) Add book object to array.
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J. K. Rowling",
+};
+
+const booksAfterAdding = [...books, newBook];
+// Now we've created a new Array with our new addition to the array, without mutating or changing the original data.
+booksAfterAdding;
+
+// 2) Delete a book object from array.
+
+// Anything that doesn't have id 3, will be filtered out.
+const booksAfterDelete = booksAfterAdding.filter((book) => book.id !== 3);
+booksAfterDelete;
+
+// 3) Update book object in the array.
+// Mapping allows us to keep the same length and modify properties within the object.
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+
+booksAfterUpdate;
