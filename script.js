@@ -251,4 +251,23 @@ const adventureBooks = books
   .map((book) => book.title); // mapping to new array for just titles to make it more readable.
 adventureBooks;
 
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0); // this 0 could also be an array[] or an object{} basically can do anything that we can do with map and filter with reduce instead.
+pagesAllBooks;
+
+const x = [3, 7, 1, 9, 6];
+const sorted = x.slice().sort((a, b) => a - b);
+// a - b == ascending order, lowest number minus the highest number to sort it that way.
+// sort is not a functional method, its a mutator, which is why x has also been modified. (We probably want to try and avoid this. So we use .slice() method to seperate the arrays.)
+sorted;
+x;
+
+const sortedByPages = books
+  .slice()
+  .sort((a, b) => b.pages - a.pages)
+  .map((book) => ({
+    title: book.title,
+    pages: book.pages,
+  }));
+// mapping the title and pages to the books from highest to lowest pages, allows for easier reading.
+sortedByPages;
 console.log(longBooks);
