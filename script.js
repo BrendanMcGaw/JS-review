@@ -246,4 +246,9 @@ essentialData;
 const longBooks = books.filter((book) => book.pages > 500 && book.pages < 1000);
 // Conditional filtering to create a new array based on the conditional statement.
 
+const adventureBooks = books
+  .filter((book) => book.genres.includes("adventure"))
+  .map((book) => book.title); // mapping to new array for just titles to make it more readable.
+adventureBooks;
+
 console.log(longBooks);
