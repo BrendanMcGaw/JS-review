@@ -208,91 +208,111 @@ function getBook(id) {
 // console.log(getTotalReviewCount(book));
 // Terneray can return a value where if / else statements cannot.
 
-const books = getBooks();
-books;
+// const books = getBooks();
+// books;
 
-// Mapping
-// const newArray = [1, 2, 3, 4, 5].map((element) => element * 2);
-// newArray;
+// // Mapping
+// // const newArray = [1, 2, 3, 4, 5].map((element) => element * 2);
+// // newArray;
 
-oldArray = [1, 2, 3, 4, 5];
-const newArray = oldArray.map((el) => el * 2);
+// oldArray = [1, 2, 3, 4, 5];
+// const newArray = oldArray.map((el) => el * 2);
 
-console.log(newArray);
+// console.log(newArray);
 
-function getTotalReviewCount(book) {
-  const goodread = book.reviews?.goodreads?.reviewsCount; // initial ? is for optional chaining, to make sure that "goodreads" even exists.
-  const librarything = book.reviews?.librarything?.reviewsCount ?? 0; // knowledge coelescing allows us to give a value of 0 if there is nothing there.
-  librarything;
-  return goodread + librarything;
+// function getTotalReviewCount(book) {
+//   const goodread = book.reviews?.goodreads?.reviewsCount; // initial ? is for optional chaining, to make sure that "goodreads" even exists.
+//   const librarything = book.reviews?.librarything?.reviewsCount ?? 0; // knowledge coelescing allows us to give a value of 0 if there is nothing there.
+//   librarything;
+//   return goodread + librarything;
+// }
+
+// // Maps through the data of titles across each book and then stores those titles in a new array called "titles"
+// const titles = books.map((book) => book.title);
+// titles;
+
+// // Creating a new object with multiple properties pulled from the initial object.
+// const essentialData = books.map((book) => ({
+//   // the paranthesis enclosing the {} allows us to automatically return the contents, since normally a {} following an arrow function would be considered a decleration
+//   // we have to return the contents in order to store them in our new object array.
+//   title: book.title,
+//   author: book.author,
+//   reviewsCount: getTotalReviewCount(book),
+//   pages: book.pages,
+// }));
+// // essentialData is now a new object with properties assigned for both the title and author of each book.
+// essentialData;
+
+// const longBooks = books.filter((book) => book.pages > 500 && book.pages < 1000);
+// // Conditional filtering to create a new array based on the conditional statement.
+
+// const adventureBooks = books
+//   .filter((book) => book.genres.includes("adventure"))
+//   .map((book) => book.title); // mapping to new array for just titles to make it more readable.
+// adventureBooks;
+
+// const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0); // this 0 could also be an array[] or an object{} basically can do anything that we can do with map and filter with reduce instead.
+// pagesAllBooks;
+
+// const x = [3, 7, 1, 9, 6];
+// const sorted = x.slice().sort((a, b) => a - b);
+// // a - b == ascending order, lowest number minus the highest number to sort it that way.
+// // sort is not a functional method, its a mutator, which is why x has also been modified. (We probably want to try and avoid this. So we use .slice() method to seperate the arrays.)
+// sorted;
+// x;
+
+// const sortedByPages = books
+//   .slice()
+//   .sort((a, b) => b.pages - a.pages)
+//   .map((book) => ({
+//     title: book.title,
+//     pages: book.pages,
+//   }));
+// // mapping the title and pages to the books from highest to lowest pages, allows for easier reading.
+// sortedByPages;
+// console.log(longBooks);
+
+// // 1) Add book object to array.
+// const newBook = {
+//   id: 6,
+//   title: "Harry Potter and the Chamber of Secrets",
+//   author: "J. K. Rowling",
+// };
+
+// const booksAfterAdding = [...books, newBook];
+// // Now we've created a new Array with our new addition to the array, without mutating or changing the original data.
+// booksAfterAdding;
+
+// // 2) Delete a book object from array.
+
+// // Anything that doesn't have id 3, will be filtered out.
+// const booksAfterDelete = booksAfterAdding.filter((book) => book.id !== 3);
+// booksAfterDelete;
+
+// // 3) Update book object in the array.
+// // Mapping allows us to keep the same length and modify properties within the object.
+// const booksAfterUpdate = booksAfterDelete.map((book) =>
+//   book.id === 1 ? { ...book, pages: 1210 } : book
+// );
+
+// booksAfterUpdate;
+
+// Asynchronous promises.
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+// Promises make it so that javascript can immediately move on to the next line, whilst it awaits the data request.
+
+async function getTodos() {
+  // await makes JavaScript wait until the fetch has been completed before it moves on with any further code running.
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await res.json();
+  console.log(data);
+
+  // Would normally update state from this function, rather then return some data.
+  return data;
 }
 
-// Maps through the data of titles across each book and then stores those titles in a new array called "titles"
-const titles = books.map((book) => book.title);
-titles;
-
-// Creating a new object with multiple properties pulled from the initial object.
-const essentialData = books.map((book) => ({
-  // the paranthesis enclosing the {} allows us to automatically return the contents, since normally a {} following an arrow function would be considered a decleration
-  // we have to return the contents in order to store them in our new object array.
-  title: book.title,
-  author: book.author,
-  reviewsCount: getTotalReviewCount(book),
-  pages: book.pages,
-}));
-// essentialData is now a new object with properties assigned for both the title and author of each book.
-essentialData;
-
-const longBooks = books.filter((book) => book.pages > 500 && book.pages < 1000);
-// Conditional filtering to create a new array based on the conditional statement.
-
-const adventureBooks = books
-  .filter((book) => book.genres.includes("adventure"))
-  .map((book) => book.title); // mapping to new array for just titles to make it more readable.
-adventureBooks;
-
-const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0); // this 0 could also be an array[] or an object{} basically can do anything that we can do with map and filter with reduce instead.
-pagesAllBooks;
-
-const x = [3, 7, 1, 9, 6];
-const sorted = x.slice().sort((a, b) => a - b);
-// a - b == ascending order, lowest number minus the highest number to sort it that way.
-// sort is not a functional method, its a mutator, which is why x has also been modified. (We probably want to try and avoid this. So we use .slice() method to seperate the arrays.)
-sorted;
-x;
-
-const sortedByPages = books
-  .slice()
-  .sort((a, b) => b.pages - a.pages)
-  .map((book) => ({
-    title: book.title,
-    pages: book.pages,
-  }));
-// mapping the title and pages to the books from highest to lowest pages, allows for easier reading.
-sortedByPages;
-console.log(longBooks);
-
-// 1) Add book object to array.
-const newBook = {
-  id: 6,
-  title: "Harry Potter and the Chamber of Secrets",
-  author: "J. K. Rowling",
-};
-
-const booksAfterAdding = [...books, newBook];
-// Now we've created a new Array with our new addition to the array, without mutating or changing the original data.
-booksAfterAdding;
-
-// 2) Delete a book object from array.
-
-// Anything that doesn't have id 3, will be filtered out.
-const booksAfterDelete = booksAfterAdding.filter((book) => book.id !== 3);
-booksAfterDelete;
-
-// 3) Update book object in the array.
-// Mapping allows us to keep the same length and modify properties within the object.
-const booksAfterUpdate = booksAfterDelete.map((book) =>
-  book.id === 1 ? { ...book, pages: 1210 } : book
-);
-
-booksAfterUpdate;
+// This means
+const todosData = getTodos();
+console.log(todosData);
